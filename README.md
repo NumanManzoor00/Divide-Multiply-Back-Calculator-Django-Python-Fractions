@@ -1,175 +1,115 @@
 # Divide & Multiply-Back Calculator
 
-A simple Django web application that demonstrates exact division and multiplication-back calculations using Python's `Fraction` module.
+A simple Django calculator that uses Python's `Fraction` module for **exact division and multiplication-back calculations** without floating-point precision errors.
 
-Instead of using floating-point numbers, the application performs calculations with exact fractions, preventing precision errors.
-
-For example:
+### Example
 
 ```text
 100 ÷ 3 = 100/3
-(100/3) × 3 = 100
+100/3 × 3 = 100
 ```
-
-The calculation remains mathematically exact internally, while the results can be rounded for display.
 
 ## Features
 
-* Exact division using Python's `Fraction`
-* Accurate multiplication-back calculation
-* No floating-point precision loss
-* Simple and user-friendly interface
+* Exact calculations with `Fraction`
 * Django form validation
-* Responsive calculator interface
-* Clear display of calculation results
+* Division and multiplication-back verification
+* Simple responsive UI
+* Prevents floating-point precision errors
 
 ## Tech Stack
 
 * Python
 * Django
-* HTML
-* CSS
-* Python `fractions.Fraction`
+* HTML & CSS
+* `fractions.Fraction`
 
-## How It Works
+## Step-by-Step Setup
 
-The user enters:
-
-1. A dividend
-2. A divisor
-
-The application divides the dividend by the divisor using an exact `Fraction`.
-
-It then multiplies the result by the same divisor to verify that the original number is recovered exactly.
-
-### Example
-
-```text
-Dividend: 100
-Divisor: 3
-
-Division:
-100 / 3 = 100/3
-
-Multiply Back:
-100/3 × 3 = 100
-```
-
-Unlike standard floating-point calculations, the internal calculation does not lose precision.
-
-## Project Structure
-
-```text
-calcsite/
-│
-├── calculator/
-│   ├── logic.py
-│   ├── forms.py
-│   ├── views.py
-│   ├── templates/
-│   │   └── calculator/
-│   │       └── calculator.html
-│   └── ...
-│
-├── calcsite/
-│   ├── settings.py
-│   ├── urls.py
-│   ├── wsgi.py
-│   └── ...
-│
-├── manage.py
-├── requirements.txt
-└── README.md
-```
-
-## Installation
-
-Clone the repository:
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/NumanManzoor00/Divide-Multiply-Back-Calculator-Django-Python-Fractions.git
 ```
 
-Navigate into the project:
+### 2. Open the Project
 
 ```bash
 cd Divide-Multiply-Back-Calculator-Django-Python-Fractions
 ```
 
-Install the dependencies:
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run database migrations:
+### 4. Run Migrations
 
 ```bash
 python manage.py migrate
 ```
 
-Start the development server:
+### 5. Start the Server
 
 ```bash
 python manage.py runserver
 ```
 
-Open the application in your browser:
+### 6. Open in Browser
 
 ```text
 http://127.0.0.1:8000/
 ```
 
-## Main Files
+## How It Works
 
-### `calculator/logic.py`
+1. Enter a dividend.
+2. Enter a divisor.
+3. Django validates the input.
+4. `Fraction` performs exact division.
+5. The result is multiplied back by the divisor.
+6. The application displays the final results.
 
-Contains the core calculation logic using Python's `Fraction` class.
+## Project Structure
 
-### `calculator/forms.py`
+```text
+calcsite/
+├── calculator/
+│   ├── logic.py
+│   ├── forms.py
+│   ├── views.py
+│   └── templates/
+│       └── calculator/
+│           └── calculator.html
+├── calcsite/
+├── manage.py
+├── requirements.txt
+└── README.md
+```
 
-Handles user input for the dividend and divisor.
+## Why `Fraction`?
 
-### `calculator/views.py`
-
-Connects the form, calculation logic, and HTML template.
-
-### `calculator/templates/calculator/calculator.html`
-
-Contains the calculator interface and result display.
-
-## Why Fraction?
-
-Python floating-point numbers can introduce small precision errors:
+Floating-point calculations can cause precision issues:
 
 ```python
 0.1 + 0.2
+# 0.30000000000000004
 ```
 
-may produce:
-
-```text
-0.30000000000000004
-```
-
-Using `Fraction` allows calculations to remain exact:
+`Fraction` keeps calculations mathematically exact:
 
 ```python
 from fractions import Fraction
 
-result = Fraction(100, 3)
-```
-
-This produces the exact value:
-
-```text
-100/3
+Fraction(100, 3)
+# 100/3
 ```
 
 ## Purpose
 
-This project demonstrates how Django can be combined with Python's built-in mathematical tools to build a reliable calculator while avoiding common floating-point precision problems.
+This project demonstrates how **Django + Python `Fraction`** can be used to build an accurate calculator without floating-point precision loss.
 
 ## License
 
-This project is available for educational and personal use.
+For educational and personal use.

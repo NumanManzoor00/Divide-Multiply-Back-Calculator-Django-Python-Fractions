@@ -1,6 +1,6 @@
 # Divide & Multiply-Back Calculator
 
-A simple Django calculator that uses Python's `Fraction` module for **exact division and multiplication-back calculations** without floating-point precision errors.
+A simple Django calculator that uses Python's built-in `Fraction` module to perform **exact division and multiplication-back calculations** without floating-point precision errors.
 
 ### Example
 
@@ -11,18 +11,19 @@ A simple Django calculator that uses Python's `Fraction` module for **exact divi
 
 ## Features
 
-* Exact calculations with `Fraction`
+* Exact arithmetic using `fractions.Fraction`
 * Django form validation
 * Division and multiplication-back verification
-* Simple responsive UI
-* Prevents floating-point precision errors
+* Responsive and simple user interface
+* Handles division without floating-point precision loss
+* Clear display of the original input, quotient, and multiplication-back result
 
 ## Tech Stack
 
-* Python
-* Django
-* HTML & CSS
-* `fractions.Fraction`
+* **Python**
+* **Django**
+* **HTML & CSS**
+* **fractions.Fraction**
 
 ## Step-by-Step Setup
 
@@ -38,25 +39,45 @@ git clone https://github.com/NumanManzoor00/Divide-Multiply-Back-Calculator-Djan
 cd Divide-Multiply-Back-Calculator-Django-Python-Fractions
 ```
 
-### 3. Install Dependencies
+### 3. Create a Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+Activate it on Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+On macOS/Linux:
+
+```bash
+source venv/bin/activate
+```
+
+### 4. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Run Migrations
+### 5. Run Migrations
 
 ```bash
 python manage.py migrate
 ```
 
-### 5. Start the Server
+### 6. Start the Development Server
 
 ```bash
 python manage.py runserver
 ```
 
-### 6. Open in Browser
+### 7. Open in Browser
+
+Visit:
 
 ```text
 http://127.0.0.1:8000/
@@ -64,17 +85,29 @@ http://127.0.0.1:8000/
 
 ## How It Works
 
-1. Enter a dividend.
-2. Enter a divisor.
-3. Django validates the input.
-4. `Fraction` performs exact division.
-5. The result is multiplied back by the divisor.
-6. The application displays the final results.
+1. Enter a **dividend**.
+2. Enter a **divisor**.
+3. Django validates the submitted values.
+4. Python's `Fraction` performs the division exactly.
+5. The quotient is multiplied back by the divisor.
+6. The application displays the exact division and multiplication-back results.
+
+### Calculation Flow
+
+```text
+Dividend ÷ Divisor
+        ↓
+Exact Fraction
+        ↓
+Quotient × Divisor
+        ↓
+Original Dividend
+```
 
 ## Project Structure
 
 ```text
-calcsite/
+Divide-Multiply-Back-Calculator-Django-Python-Fractions/
 ├── calculator/
 │   ├── logic.py
 │   ├── forms.py
@@ -88,28 +121,48 @@ calcsite/
 └── README.md
 ```
 
-## Why `Fraction`?
+## Why Use `Fraction`?
 
-Floating-point calculations can cause precision issues:
+Floating-point numbers can produce unexpected precision results:
 
 ```python
 0.1 + 0.2
 # 0.30000000000000004
 ```
 
-`Fraction` keeps calculations mathematically exact:
+Python's `Fraction` class represents numbers as exact rational values:
 
 ```python
 from fractions import Fraction
 
-Fraction(100, 3)
+result = Fraction(100, 3)
+
+print(result)
 # 100/3
 ```
 
+The calculation can then be multiplied back exactly:
+
+```python
+result * 3
+# 100
+```
+
+This makes `Fraction` useful when exact mathematical results are more important than floating-point approximations.
+
 ## Purpose
 
-This project demonstrates how **Django + Python `Fraction`** can be used to build an accurate calculator without floating-point precision loss.
+This project demonstrates how **Django and Python's `Fraction` module** can be combined to build a simple calculator that performs accurate division and verifies the result through multiplication-back calculations.
+
+It is also a practical example of:
+
+* Django forms
+* Django views
+* Python modules
+* Exact arithmetic
+* Input validation
+* Basic frontend integration
 
 ## License
 
-For educational and personal use..
+For educational and personal use.

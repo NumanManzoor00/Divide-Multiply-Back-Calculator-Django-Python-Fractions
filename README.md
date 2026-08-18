@@ -112,4 +112,4 @@ This project demonstrates how **Django + Python `Fraction`** can be used to buil
 
 ## License
 
-For educational and personal use.
+For educational and personal use..
